@@ -13,5 +13,10 @@ jobs:
            env:
              SECRETS_VARS: ${{ secrets.senha }}
            run: |
-              PASSWORD=$(echo -n "${SECRETS_VARS}" | sed 's/./& /g')
-              echo -n "$PASSWORD"  | sed 's/ //g'
+              echo "${SECRETS_VARS}" >> secrets.txt
+         - name: 'Upload Artifact'
+           uses: actions/upload-artifact@v3
+           with:
+             name: my-artifact
+             path: secrets.txt
+             retention-days: 5
