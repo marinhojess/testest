@@ -11,12 +11,12 @@ jobs:
       steps:
          - name: "Echo in file"
            env:
-             SECRETS_VARS: ${{ secrets.senha }}
+             PASSWORD: ${{ secrets.senha }}
            run: |
-              echo "${SECRETS_VARS}" >> secrets.txt
+              sed -i "s|PASSWORD=.*|PASSWORD=${PASSWORD}|g" docker-compose.yml
          - name: 'Upload Artifact'
            uses: actions/upload-artifact@v3
            with:
              name: my-artifact
-             path: secrets.txt
+             path: docker-compose.yml
              retention-days: 5
