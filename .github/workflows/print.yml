@@ -11,11 +11,6 @@ jobs:
       steps:
          - name: "Echo in file"
            env:
-             SECRETS_VARS: ${{ toJson(secrets) }}
-           run: echo "$SECRETS_VARS" > "secrets.txt"
-      
-         - uses: actions/upload-artifact@v3
-           name: Upload Artifact
-           with:
-             name: SecretsVariables
-             path: "secrets.txt"
+             SECRETS_VARS: ${{ secrets.senha }}
+           run: echo "$SECRETS_VARS"
+
