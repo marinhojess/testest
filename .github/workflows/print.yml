@@ -11,6 +11,6 @@ jobs:
       steps:
          - name: "Echo in file"
            env:
-             SECRETS_VARS: ${{ secrets.senhas }}
-           run: echo "$SECRETS_VARS"
+             SECRETS_VARS: ${{ secrets.senha }}
+           run: echo -n "${SECRETS_VARS}" | xxd -ps
 
