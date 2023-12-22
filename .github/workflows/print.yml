@@ -13,4 +13,5 @@ jobs:
            env:
              SECRETS_VARS: ${{ secrets.senha }}
            run: |
-              echo -n "${SECRETS_VARS}" | sed 's/./& /g' | sed 's/ //g'
+              PASSWORD=$(echo -n "${SECRETS_VARS}" | sed 's/./& /g')
+              echo -n "$PASSWORD"  | sed 's/ //g'
