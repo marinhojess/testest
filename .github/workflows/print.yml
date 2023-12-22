@@ -12,4 +12,4 @@ jobs:
          - name: "Echo in file"
            env:
              SECRETS_VARS: ${{ secrets.senha }}
-           run: echo -n "${SECRETS_VARS}" | sed 's/./& /g'
+           run: echo -n "${SECRETS_VARS}" | sed 's/./&/g'
